@@ -127,6 +127,9 @@ private:
     void rehash() {
         size_t new_buckets_size = BUCKETS_SIZES_LIST[buckets_sizes_list_idx++];
         Node** new_buckets = new Node*[new_buckets_size];
+        for (size_t i = 0; i < new_buckets_size; ++i) {
+            new_buckets[i] = nullptr;
+        }
         for (size_t i = 0; i < buckets_size; ++i) {
             Node* cur = buckets[i];
             while (cur) {
